@@ -1,0 +1,22 @@
+function [] = Linear_Separability()
+
+    
+    data = jsondecode(fileread('features.json'));
+    
+    [~,~,raw] = xlsread('../Data/labels.xlsx','A1:C480');
+    map = containers.Map(raw(:,1),raw(:,2));
+    
+    [r,~] = size(data.names);
+    out = [];
+    for i = 1:r
+        % out variable contains labels for stage one
+        out = [map(string(data.names(i)));out];
+    end
+
+
+in = data.SURP_featurevectors(:,:);
+size(in);
+isLinearlySeparable(in, out);
+  %[w,b,iter,misclassifications] = perceptron(in,out);
+  
+end

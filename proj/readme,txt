@@ -1,0 +1,64 @@
+Readme file .
+* Please make sure all the required packages are installed such as
+  LIME,SHAP , skimage , PIL , numpy , pandas , copy
+
+
+Before looking into code please look at internal working of lime and shap
+otherwise its difficult to make sense
+
+For interactive version to get sense of XAI models use project.ipynb file
+
+Before running code please make all the path changes corresponding to your PC
+Directory structure of my project :
+
+I am attaching untouched version of matlab code (in thyroid folder)
+and the stuff I changed in matlab (xai_thyroid folder) Please re run matlab code
+to create matlab models
+
+-project.ipynb
+-custom_lime.py
+-lime_lib.py
+-shap.py
+-ddti
+-xai_thyroid
+    - Data_temp :- where I put files to test for lime,shap
+    - code
+    - Data
+
+
+And please make few optimizations if possible to make code run faster.
+i) In test_with_single_input_7200_hot , features_of_single_image only return
+  features of single image as we are having so many matlab func calls its taking time
+  So please ensure if possible you are returning batch of images .
+
+  similarly with return_probs_hog
+
+file :- custom_lime.py
+        My suggestion is to use project.ipynb to get sense of each step
+        Functions : perturb_image
+                        args :- image ,
+                                a perturbation of an image ,
+                                segments of image.
+                        output :- return perturbed_image
+
+                     For other segment of code I added comments
+                     appropriately you can try various commented code by
+                     uncommenting it to see the changes.
+                     Novelity :- different segmentation techniques,
+                                 Using custom locally weighted LR
+                                 and its corresponding kernel function.
+
+                    Drawback :- Takes time to run
+
+        lime_lib.py
+        library implementation of lime , code is self describable
+
+        shap_lib_inpaint_telea.py
+        shap implementation with inpaint_telea
+
+        shap_lib_blur.py
+        shap implementation with blur
+
+
+Changes made in matlab code are self describable such as
+test_with_single_input_7200_hot , features_of_single_image etc.. etc..
